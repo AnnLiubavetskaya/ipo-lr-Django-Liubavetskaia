@@ -6,23 +6,26 @@
     <style>
         body { font-family: Arial, sans-serif; margin: 20px; }
         ul { list-style: none; padding: 0; }
-        li { margin: 10px 0; }
+        li { margin: 10px 0; padding: 10px; border: 1px solid #eee; }
         a { text-decoration: none; color: #0066cc; }
         a:hover { text-decoration: underline; }
+        .empty { color: #999; }
     </style>
 </head>
 <body>
-    <h1>Учреждения</h1>
-    <ul>
-        {% for q in qualifications %}
-            <li>
-                <a href="{% url 'qualification_detail' id=q.id %}">
-                    {{ q.title }} (ID: {{ q.id }})
-                </a>
-            </li>
-        {% empty %}
-            <li>Нет данных</li>
-        {% endfor %}
-    </ul>
+    <h1>Список учреждений</h1>
+    {% if qualifications %}
+        <ul>
+            {% for q in qualifications %}
+                <li>
+                    <a href="{% url 'qualification_detail' id=q.id %}">
+                        {{ q.title }} (ID: {{ q.id }})
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="empty">Нет данных для отображения</p>
+    {% endif %}
 </body>
 </html>
