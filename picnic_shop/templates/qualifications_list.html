@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Список квалификаций</title>
+</head>
+<body>
+    <h1>Все квалификации</h1>
+    <ul>
+        {% for q in qualifications %}
+            <li>
+                <a href="{% url 'qualification_detail' id=q.id %}">
+                    {{ q.name }} (ID: {{ q.id }})
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
