@@ -2,20 +2,30 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>{{ qualification.name }}</title>
+    <title>{{ qualification.title }}</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #333; }
+        p { margin: 5px 0; }
+        .back-link { display: inline-block; margin-top: 20px; color: #0066cc; }
+    </style>
 </head>
 <body>
-    <h1>{{ qualification.name }}</h1>
-    <p><strong>ID:</strong> {{ qualification.id }}</p>
-    <p><strong>Описание:</strong> {{ qualification.description }}</p>
-    
-    <h2>Навыки:</h2>
-    <ul>
-        {% for skill in qualification.skills %}
-            <li>{{ skill }}</li>
-        {% endfor %}
-    </ul>
-    
-    <a href="{% url 'qualifications_list' %}">← Назад к списку</a>
+    <h1>{{ qualification.title }}</h1>
+    <p><strong>Краткое название:</strong> {{ qualification.short_title }}</p>
+    <p><strong>Описание:</strong> {{ qualification.desc }}</p>
+    <p><strong>Адрес:</strong> {{ qualification.adress }}</p>
+    <p><strong>Телефон:</strong> {{ qualification.tel }}</p>
+    <p><strong>Email:</strong> {{ qualification.email }}</p>
+
+    {% if qualification.wsite %}
+    <p><strong>Сайт:</strong> <a href="{{ qualification.wsite }}" target="_blank">{{ qualification.wsite }}</a></p>
+    {% endif %}
+
+    {% if qualification.coords %}
+    <p><strong>Координаты:</strong> {{ qualification.coords }}</p>
+    {% endif %}
+
+    <a href="{% url 'qualifications_list' %}" class="back-link">← Назад к списку</a>
 </body>
 </html>

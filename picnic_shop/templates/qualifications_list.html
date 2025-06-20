@@ -2,17 +2,26 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Список квалификаций</title>
+    <title>Список учреждений</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        ul { list-style: none; padding: 0; }
+        li { margin: 10px 0; }
+        a { text-decoration: none; color: #0066cc; }
+        a:hover { text-decoration: underline; }
+    </style>
 </head>
 <body>
-    <h1>Все квалификации</h1>
+    <h1>Учреждения</h1>
     <ul>
         {% for q in qualifications %}
             <li>
                 <a href="{% url 'qualification_detail' id=q.id %}">
-                    {{ q.name }} (ID: {{ q.id }})
+                    {{ q.title }} (ID: {{ q.id }})
                 </a>
             </li>
+        {% empty %}
+            <li>Нет данных</li>
         {% endfor %}
     </ul>
 </body>
