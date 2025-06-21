@@ -1,1 +1,1 @@
-# ipo-lr-14-Liubavetskaia
+# ipo-lr-Django-Liubavetskaia
