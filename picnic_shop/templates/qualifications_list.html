@@ -4,28 +4,36 @@
     <meta charset="UTF-8">
     <title>Список учреждений</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
+        .error { color: red; padding: 10px; background: #ffeeee; }
+        .debug { color: #666; font-size: 0.9em; margin: 10px 0; }
         ul { list-style: none; padding: 0; }
-        li { margin: 10px 0; padding: 10px; border: 1px solid #eee; }
-        a { text-decoration: none; color: #0066cc; }
-        a:hover { text-decoration: underline; }
-        .empty { color: #999; }
+        li { padding: 8px; border-bottom: 1px solid #eee; }
     </style>
 </head>
 <body>
     <h1>Список учреждений</h1>
+    
+    <div class="debug">
+        Всего найдено: {{ qualifications|length }} записей
+    </div>
+    
+    {% if error %}
+        <div class="error">{{ error }}</div>
+    {% endif %}
+    
     {% if qualifications %}
         <ul>
             {% for q in qualifications %}
                 <li>
                     <a href="{% url 'qualification_detail' id=q.id %}">
-                        {{ q.title }} (ID: {{ q.id }})
+                        {{ q.title|default:"Без названия" }} 
+                        <small>(ID: {{ q.id }})</small>
                     </a>
                 </li>
             {% endfor %}
         </ul>
     {% else %}
-        <p class="empty">Нет данных для отображения</p>
+        <p>Нет данных для отображения</p>
     {% endif %}
 </body>
 </html>
