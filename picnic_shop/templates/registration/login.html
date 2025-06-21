@@ -1,0 +1,29 @@
+<!-- picnic_shop/templates/registration/login.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Вход в магазин для пикника</title>
+    <style>
+        body { font-family: Arial; padding: 20px; max-width: 400px; margin: 0 auto; }
+        .form-group { margin-bottom: 15px; }
+        input { width: 100%; padding: 8px; box-sizing: border-box; }
+        button { background: #3498db; color: white; border: none; padding: 10px; width: 100%; }
+    </style>
+</head>
+<body>
+    <h1>Вход</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <input type="text" name="username" placeholder="Логин" required>
+        </div>
+        <div class="form-group">
+            <input type="password" name="password" placeholder="Пароль" required>
+        </div>
+        <button type="submit">Войти</button>
+    </form>
+    {% if form.errors %}
+        <p style="color: red;">Неверный логин или пароль</p>
+    {% endif %}
+</body>
+</html>
