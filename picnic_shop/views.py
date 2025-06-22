@@ -101,11 +101,11 @@ def product_list(request):
             Q(description__icontains=search_query)
         )
     
-    return render(request, 'picnic_shop/product_list.html', {'products': products})
+    return render(request, 'shop/product_list.html', {'products': products})
 
 def product_detail(request, pk):
     product = get_object_or_404(Product, pk=pk)
-    return render(request, 'picnic_shop/product_detail.html', {'product': product})
+    return render(request, 'shop/product_detail.html', {'product': product})
 
 @login_required
 def add_to_cart(request, product_id):
@@ -145,7 +145,7 @@ def cart_view(request):
     cart_items = cart.cart_items.all()
     total_price = sum(item.item_price() for item in cart_items)
     
-    return render(request, 'picnic_shop/cart.html', {
+    return render(request, 'shop/cart.html', {
         'cart_items': cart_items,
         'total_price': total_price,
     })

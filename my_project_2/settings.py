@@ -57,6 +57,7 @@ ROOT_URLCONF = 'my_project_2.urls'
 
 TEMPLATES = [
     {
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [],
         'APP_DIRS': True,
@@ -140,3 +141,8 @@ LOGGING = {
         'level': 'DEBUG',
     },
 }
+#17
+# Настройки аутентификации
+LOGIN_REDIRECT_URL = '/catalog/'  # Перенаправление после входа
+LOGOUT_REDIRECT_URL = '/'         # Перенаправление после выхода
+LOGIN_URL = '/login/'             # Страница входа (для @login_required)
